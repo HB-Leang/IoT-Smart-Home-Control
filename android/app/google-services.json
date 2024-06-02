@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "212671425298",
+    "firebase_url": "https://smart-home-2bc83-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "smart-home-2bc83",
+    "storage_bucket": "smart-home-2bc83.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212671425298:android:6bf4f69749f4b5677b61cb",
+        "android_client_info": {
+          "package_name": "com.example.iot_demo2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsydTwLfJ3ylM_yE1IAM91Wmph7X5IS0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212671425298:android:88ffd4a2ff04d2c87b61cb",
+        "android_client_info": {
+          "package_name": "com.example.smart_home_control"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsydTwLfJ3ylM_yE1IAM91Wmph7X5IS0A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
