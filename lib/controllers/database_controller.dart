@@ -70,6 +70,7 @@ class DatabaseController extends GetxController {
     // isConected = true;
     light.onValue.listen((DatabaseEvent event) {
       getLightValue(event);
+      update();
       // Map<dynamic, dynamic> values =
       //     event.snapshot.value as Map<dynamic, dynamic>;
       // print("light values in listen : $values");
@@ -114,6 +115,7 @@ class DatabaseController extends GetxController {
     lightController.firstFloor.value = values['firstFloor'];
     lightController.kitchen.value = values['kitchen'];
     lightController.livingRoom.value = values['livingRoom'];
+    update();
   }
 
   void getSensorValue(DatabaseEvent snap) {
@@ -127,6 +129,9 @@ class DatabaseController extends GetxController {
   void getActuatorsValue(DatabaseEvent snap) {
     Map<dynamic, dynamic> values = snap.snapshot.value as Map<dynamic, dynamic>;
 
+    actuatorController.curtain.value = values['curtain'];
+    actuatorController.gate.value = values['gate'];
+
     actuatorController.doors['balcony']!.value = values['door']['balcony'];
     actuatorController.doors['bedRoom1']!.value = values['door']['bedRoom1'];
     actuatorController.doors['bedRoom2']!.value = values['door']['bedRoom2'];
@@ -134,7 +139,7 @@ class DatabaseController extends GetxController {
     actuatorController.doors['garage']!.value = values['door']['garage'];
   }
 
-  void on_off(DatabaseReference dbRef, String childName) async {
+  Future<void> on_off(DatabaseReference dbRef, String childName) async {
     // final child = await dbRef.child(childName).get();
     // final child = await database.child('LivingRoom/led1/').get();
     // if (child.exists) print(child.value);
@@ -150,11 +155,3 @@ class DatabaseController extends GetxController {
     // dbRef.update({childName: snapshot.child(childName).value == 1 ? 0 : 1});
   }
 }
-
-
-
-
-// Future checkFirebase() async {
-//   Future.delayed(const Duration(seconds: 2)).then((value) {
-//     if(d)
-//   });

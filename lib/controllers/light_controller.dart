@@ -37,12 +37,6 @@ class LightController extends GetxController {
     // if (child.exists) print(child.value);
     final db = dbRef.child(childName);
     final snapshot = await db.get();
-    // print("snap value get :${snapshot.child(childName).value}");
     await db.set(snapshot.child(childName).value == 1 ? 0 : 1);
-    // print("led : ${snapshot.child(childName).child('state').value}");
-    // final snapshot2 = await db.get();
-    // print(" snap : ${snapshot2.child("livingRoom").value}");
-    // dbRef.update({childName: snapshot.child(childName).value == 1 ? 0 : 1});
-    // dbRef.update({childName: snapshot.child(childName).value == 1 ? 0 : 1});
   }
 }

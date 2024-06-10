@@ -11,9 +11,10 @@ class ControlCard extends StatelessWidget {
     required this.mySwitch,
     this.activeChild = "ON",
     this.inactiveChild = "OFF",
+    this.toggleSize,
     this.width = 80.0,
     this.height = 40.0,
-    this.borderRadius = const BorderRadius.all(const Radius.circular(20)),
+    this.borderRadius = 30.0,
     this.activeImage = "assets/icons/light-bulb-on.png",
     this.inactiveImage = "assets/icons/light-bulb-off.png",
   });
@@ -21,9 +22,10 @@ class ControlCard extends StatelessWidget {
   final MySwitch mySwitch;
   final String activeChild;
   final String inactiveChild;
+  final double? toggleSize;
   final double width;
   final double height;
-  final BorderRadius borderRadius;
+  final double borderRadius;
   final String activeImage;
   final String inactiveImage;
   @override
@@ -51,7 +53,7 @@ class ControlCard extends StatelessWidget {
               Text(
                 controlName,
                 style: const TextStyle(
-                  fontSize: 22,
+                  fontSize: 20,
                 ),
               ),
               Obx(
@@ -75,6 +77,7 @@ class ControlCard extends StatelessWidget {
             mySwitch: mySwitch,
             activeChild: activeChild,
             inactiveChild: inactiveChild,
+            toggleSize: toggleSize,
             width: width,
             height: height,
             borderRadius: borderRadius,

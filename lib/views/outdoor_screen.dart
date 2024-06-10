@@ -3,7 +3,9 @@ import 'dart:ffi';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:riff_switch/riff_switch.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/models/color.dart';
@@ -32,22 +34,6 @@ class OutdoorScreen extends StatelessWidget {
         child: Column(
           children: [
             ControlCard(
-              controlName: "Bedroom Door",
-              activeImage: "assets/icons/door-open.png",
-              inactiveImage: "assets/icons/door-close.png",
-              activeChild: "OPEN",
-              inactiveChild: "CLOSE",
-              width: 100,
-              mySwitch: MySwitch(
-                  reference: databaseController.actuators,
-                  childName: 'door/bedRoom1',
-                  initValue: databaseController.actuatorController
-                      .getDoor('bedRoom1')),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            ControlCard(
               controlName: "Garage Light",
               mySwitch: MySwitch(
                 reference: databaseController.light,
@@ -71,6 +57,107 @@ class OutdoorScreen extends StatelessWidget {
               activeChild: "OPEN",
               inactiveChild: "CLOSE",
               width: 100,
+            ),
+            Obx(
+              () => LiteRollingSwitch(
+                value: databaseController.lightController.garage.value == 1
+                    ? true
+                    : false,
+                width: 150,
+                textOn: 'active',
+                textOff: 'inactive',
+                colorOn: Colors.deepOrange,
+                colorOff: Colors.blueGrey,
+                iconOn: Icons.lightbulb_outline,
+                iconOff: Icons.power_settings_new,
+                animationDuration: const Duration(milliseconds: 300),
+                onChanged: (bool state) {
+                  // print('turned ${(state) ? 'on' : 'off'}');
+                  // print(databaseController.lightController
+                  //     .getLight("garage")
+                  //     .value);
+                },
+                onDoubleTap: () {},
+                onSwipe: () {},
+                onTap: () async {
+                  await databaseController.on_off(
+                      databaseController.light, "garage");
+                },
+              ),
+            ),
+            Obx(
+              () => CupertinoSwitch(
+                value: databaseController.lightController.garage.value == 1
+                    ? true
+                    : false,
+                onChanged: (state) {},
+              ),
+            ),
+            GetBuilder(
+              init: DatabaseController(),
+              builder: (controller) {
+                // var _controller = ValueNotifier<bool>(
+                //   controller.lightController.garage.value == 1 ? true : false,
+                // );
+                var _controller = controller.lightController.garage.value == 1
+                    ? ValueNotifier<bool>(true)
+                    : ValueNotifier<bool>(false);
+                return AdvancedSwitch(
+                  controller: _controller,
+                  activeColor: switchActiveColor,
+                  inactiveColor: swtichInactiveColor,
+                  activeChild: Text(
+                    "On",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  inactiveChild: Text(
+                    "Off",
+                    style: const TextStyle(fontSize: 12),
+                  ),
+                  thumb: ValueListenableBuilder<bool>(
+                    valueListenable: _controller,
+                    builder: (_, value, __) {
+                      return Icon(
+                          value ? Icons.lightbulb : Icons.lightbulb_outline);
+                    },
+                  ),
+
+                  initialValue: controller.lightController.garage.value == 1
+                      ? true
+                      : false,
+                  width: 90,
+                  height: 40,
+                  borderRadius: BorderRadius.circular(20),
+                  // controller: _controller,
+                  onChanged: (value) async {
+                    // await databaseController.on_off(
+                    //     mySwitch.reference, mySwitch.childName);
+                    // initValue.value = mySwitch.initValue.value == 1 ? true : false;
+                    // print("value : $value");
+                    // print(initValue.value);
+                    // print(mySwitch.initValue.value);
+                  },
+                );
+              },
+            ),
+            Obx(
+              () => FlutterSwitch(
+                width: 90.0,
+                height: 40.0,
+                valueFontSize: 12.0,
+                toggleSize: 25.0,
+                value: databaseController.lightController.garage.value == 1
+                    ? true
+                    : false,
+                borderRadius: 30.0,
+                padding: 5.0,
+                showOnOff: true,
+                activeText: "OPEN",
+                inactiveText: "CLOSE",
+                onToggle: (val) {
+                  databaseController.on_off(databaseController.light, "garage");
+                },
+              ),
             ),
           ],
         ),

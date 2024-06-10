@@ -1,0 +1,76 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:lite_rolling_switch/lite_rolling_switch.dart';
+import 'package:smart_home_control/controllers/database_controller.dart';
+import 'package:smart_home_control/models/my_switch.dart';
+import 'package:smart_home_control/models/size.dart';
+import 'package:smart_home_control/widgets/control_card.dart';
+
+class LivingRoom extends StatelessWidget {
+  LivingRoom({super.key});
+  final DatabaseController databaseController = Get.put(DatabaseController());
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: ListView(
+        children: [
+          Column(
+            children: [
+              ControlCard(
+                controlName: "Bedroom Door",
+                activeImage: "assets/icons/door-open.png",
+                inactiveImage: "assets/icons/door-close.png",
+                activeChild: "OPEN",
+                inactiveChild: "CLOSE",
+                width: switchSize['door']!['width']!,
+                height: switchSize['door']!['height']!,
+                toggleSize: switchSize['door']!['toggleSize'],
+                mySwitch: MySwitch(
+                    reference: databaseController.actuators,
+                    childName: 'door/bedRoom1',
+                    initValue: databaseController.actuatorController
+                        .getDoor('bedRoom1')),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              ControlCard(
+                controlName: "Garage Light",
+                width: switchSize['light']!['width']!,
+                height: switchSize['light']!['height']!,
+                toggleSize: switchSize['light']!['toggleSize'],
+                mySwitch: MySwitch(
+                  reference: databaseController.light,
+                  childName: "garage",
+                  initValue: databaseController.lightController.garage,
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              ControlCard(
+                controlName: "Garage Door",
+                mySwitch: MySwitch(
+                  reference: databaseController.actuators,
+                  childName: "door/garage",
+                  initValue:
+                      databaseController.actuatorController.getDoor('garage'),
+                ),
+                activeImage: 'assets/icons/garage-open.png',
+                inactiveImage: 'assets/icons/garage-close.png',
+                activeChild: "OPEN",
+                inactiveChild: "CLOSE",
+                width: switchSize['door']!['width']!,
+                height: switchSize['door']!['height']!,
+                toggleSize: switchSize['door']!['toggleSize']!,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
