@@ -4,7 +4,11 @@ import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/models/color.dart';
+import 'package:smart_home_control/views/bedroom1_screen.dart';
+import 'package:smart_home_control/views/bedroom2_screen.dart';
+import 'package:smart_home_control/views/garage_screen.dart';
 import 'package:smart_home_control/views/homescreen.dart';
+import 'package:smart_home_control/views/kitchen_screen.dart';
 import 'package:smart_home_control/views/living_room_page.dart';
 
 class RoomScreen extends StatelessWidget {
@@ -88,10 +92,10 @@ class RoomScreen extends StatelessWidget {
                   child: TabBarView(
                     children: <Widget>[
                       LivingRoom(),
-                      LivingRoom(),
-                      LivingRoom(),
-                      LivingRoom(),
-                      LivingRoom(),
+                      KitchenScreen(),
+                      BedRoom1Screen(),
+                      BedRoom2Screen(),
+                      GarageScreen(),
                       // Center(
                       //   child: Icon(Icons.directions_car),
                       // ),

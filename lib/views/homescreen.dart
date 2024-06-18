@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final DatabaseController databaseController = Get.put(DatabaseController());
-    final DatabaseReference dataBase = FirebaseDatabase.instance.ref();
     final WeatherController weatherController = Get.put(WeatherController());
     // final WeatherModel currentWeather = weatherController.listWeather[0];
     return Scaffold(
@@ -38,40 +37,60 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  height: MediaQuery.of(context).size.height * 0.12,
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade400,
+                    color: Colors.teal.shade400,
                     borderRadius: BorderRadius.circular(20.0),
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 10,
                         color: cardBackgroundColor,
-                        spreadRadius: 2,
+                        spreadRadius: 3,
                       ),
                     ],
                   ),
                   child: Obx(
                     () => Row(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         // Icon(
                         //   Icons.sunny,
                         //   size: 60,
                         //   color: Colors.orange,
                         // ),
+
                         Image.network(
-                          "https://openweathermap.org/img/wn/${weatherController.weather.value!.weather[0].icon}@2x.png",
+                          "https://openweathermap.org/img/wn/${weatherController.weather.value?.weather[0].icon}@2x.png",
                           fit: BoxFit.cover,
+                          frameBuilder:
+                              (context, child, frame, wasSynchronouslyLoaded) =>
+                                  child,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return const CircularProgressIndicator();
+                            }
+                          },
                         ),
                         // const SizedBox(
                         //   width: 20,
                         // ),
-                        Text(
-                          "${weatherController.weather.value!.weather[0].description.capitalize}",
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
+                        SizedBox(
+                          width: 150,
+                          child: Text(
+                            "${weatherController.weather.value!.weather[0].description.capitalize}",
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            maxLines: 2,
+                            softWrap: true,
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          softWrap: true,
                         ),
                       ],
                     ),
@@ -85,10 +104,11 @@ class HomeScreen extends StatelessWidget {
                         Obx(
                           () => Text(
                             "${databaseController.sensorController.temp.value} \u2103", // \u2103 is Celsius icon
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                           ),
                         ),
-                        Text(
+                        const Text(
                           "Temperature",
                           style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
@@ -99,10 +119,11 @@ class HomeScreen extends StatelessWidget {
                         Obx(
                           () => Text(
                             "${databaseController.sensorController.hum.value} %",
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.grey),
                           ),
                         ),
-                        Text(
+                        const Text(
                           "Humidity",
                           style: TextStyle(fontSize: 16, color: Colors.grey),
                         ),
@@ -135,21 +156,21 @@ class HomeScreen extends StatelessWidget {
                           databaseController.on_off(
                               databaseController.actuators, "gate");
                         },
-                        child: ModeSetButton(
+                        child: const ModeSetButton(
                           icon: Icons.night_shelter,
                           label: "Sleep",
                         ),
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: ModeSetButton(
+                        child: const ModeSetButton(
                           icon: Icons.wb_sunny_outlined,
                           label: "Day",
                         ),
                       ),
                       GestureDetector(
                         onTap: () {},
-                        child: ModeSetButton(
+                        child: const ModeSetButton(
                           icon: Icons.nights_stay_outlined,
                           label: "Night",
                         ),

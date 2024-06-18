@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/models/my_switch.dart';
 import 'package:smart_home_control/models/size.dart';
@@ -16,6 +15,8 @@ class LivingRoom extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: ListView(
+        shrinkWrap: true,
+        physics: const BouncingScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),

@@ -1,5 +1,4 @@
 import 'package:firebase_database/firebase_database.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:get/state_manager.dart';
 
 class LightController extends GetxController {
@@ -10,6 +9,7 @@ class LightController extends GetxController {
   RxInt garage = 0.obs;
   RxInt kitchen = 0.obs;
   RxInt livingRoom = 0.obs;
+  RxInt garageFront = 0.obs;
   DatabaseReference lightPath =
       FirebaseDatabase.instance.ref().child('smart-home/light');
 
@@ -24,6 +24,7 @@ class LightController extends GetxController {
       'garage': garage,
       'kitchen': kitchen,
       'livingRoom': livingRoom,
+      'garageFront': garageFront,
     };
   }
 

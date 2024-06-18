@@ -117,7 +117,7 @@ class DatabaseController extends GetxController {
     lightController.firstFloor.value = values['firstFloor'];
     lightController.kitchen.value = values['kitchen'];
     lightController.livingRoom.value = values['livingRoom'];
-    update();
+    lightController.garageFront.value = values['garageFront'];
   }
 
   void getSensorValue(DatabaseEvent snap) {

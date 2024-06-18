@@ -11,6 +11,7 @@ import 'package:lottie/lottie.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/firebase_options.dart';
+import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/views/home_page.dart';
 import 'package:smart_home_control/views/homescreen.dart';
 
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'IoT Smart Home Controller',
       theme: ThemeData(
+        appBarTheme: const AppBarTheme(color: mainColor, centerTitle: true),
         useMaterial3: false,
       ),
       debugShowCheckedModeBanner: false,
