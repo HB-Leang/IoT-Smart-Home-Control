@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_colorful_tab/flutter_colorful_tab.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
+import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/views/homescreen.dart';
 import 'package:smart_home_control/views/living_room_page.dart';
 
@@ -75,6 +76,7 @@ class RoomScreen extends StatelessWidget {
                   buttonMargin: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 20.0),
                   unselectedBackgroundColor: Colors.white,
+                  backgroundColor: mainColor,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 10.0),
                   unselectedLabelStyle: TextStyle(color: Colors.black),

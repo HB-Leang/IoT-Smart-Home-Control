@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_home_control/models/color.dart';
 
 class ModeSetButton extends StatelessWidget {
   const ModeSetButton({super.key, required this.icon, required this.label});
@@ -12,8 +13,7 @@ class ModeSetButton extends StatelessWidget {
         color: Colors.white,
         shape: BoxShape.circle,
         boxShadow: [
-          BoxShadow(
-              blurRadius: 10, color: Colors.blue.shade200, spreadRadius: 2)
+          BoxShadow(blurRadius: 10, color: cardBackgroundColor, spreadRadius: 2)
         ],
       ),
       child: CircleAvatar(
@@ -25,7 +25,7 @@ class ModeSetButton extends StatelessWidget {
             Icon(
               icon,
               size: 40,
-              color: Colors.blue.shade400,
+              color: Colors.teal,
             ),
             SizedBox(
               height: 5,

@@ -1,10 +1,15 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
+import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/firebase_options.dart';
 import 'package:smart_home_control/views/home_page.dart';
 import 'package:smart_home_control/views/homescreen.dart';
@@ -14,6 +19,13 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  AwesomeNotifications().initialize(null, [
+    NotificationChannel(
+      channelKey: "Flame Channel",
+      channelName: "Flame Detected",
+      channelDescription: "There is flame detected in the house",
+    )
+  ]);
   runApp(MyApp());
 }
 
@@ -22,6 +34,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final WeatherController weatherController = Get.put(WeatherController());
     final DatabaseController databaseController = Get.put(DatabaseController());
     return GetMaterialApp(
       title: 'IoT Smart Home Controller',
@@ -57,17 +70,3 @@ class LoadingScreen extends StatelessWidget {
     );
   }
 }
-
-// class LoadingScreen extends StatelessWidget {
-//   const LoadingScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Scaffold(
-//       body: Center(
-//           child: CupertinoActivityIndicator(
-//         radius: 18,
-//       )),
-//     );
-//   }
-// }

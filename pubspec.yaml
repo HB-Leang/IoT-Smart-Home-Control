@@ -49,6 +49,11 @@ dependencies:
   flutter_colorful_tab: ^0.1.1
   lite_rolling_switch: ^1.0.1
   flutter_switch: ^0.3.2
+  firebase_messaging: ^14.7.19
+  flutter_local_notifications: ^17.1.2
+  awesome_notifications: ^0.8.2
+  http: ^1.2.0
+
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 final Map<String, Map<String, double>> switchSize = {
   'door': {
-    'width': 120,
+    'width': 105,
     'height': 40,
     'toggleSize': 30.0,
   },

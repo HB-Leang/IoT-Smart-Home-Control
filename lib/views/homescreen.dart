@@ -3,8 +3,11 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
+import 'package:smart_home_control/controllers/weather_controller.dart';
+import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/models/my_switch.dart';
 import 'package:smart_home_control/models/size.dart';
+import 'package:smart_home_control/models/weather_model.dart';
 import 'package:smart_home_control/widgets/iot_switch.dart';
 import 'package:smart_home_control/widgets/mode_set_button.dart';
 
@@ -15,6 +18,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final DatabaseController databaseController = Get.put(DatabaseController());
     final DatabaseReference dataBase = FirebaseDatabase.instance.ref();
+    final WeatherController weatherController = Get.put(WeatherController());
+    // final WeatherModel currentWeather = weatherController.listWeather[0];
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -32,25 +37,45 @@ class HomeScreen extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.sunny,
-                      size: 60,
-                      color: Colors.orange,
-                    ),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Text(
-                      "Cloudy Day",
-                      style: TextStyle(
-                        fontSize: 26,
-                        fontWeight: FontWeight.bold,
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.circular(20.0),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 10,
+                        color: cardBackgroundColor,
+                        spreadRadius: 2,
                       ),
+                    ],
+                  ),
+                  child: Obx(
+                    () => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        // Icon(
+                        //   Icons.sunny,
+                        //   size: 60,
+                        //   color: Colors.orange,
+                        // ),
+                        Image.network(
+                          "https://openweathermap.org/img/wn/${weatherController.weather.value!.weather[0].icon}@2x.png",
+                          fit: BoxFit.cover,
+                        ),
+                        // const SizedBox(
+                        //   width: 20,
+                        // ),
+                        Text(
+                          "${weatherController.weather.value!.weather[0].description.capitalize}",
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          softWrap: true,
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -73,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                       children: [
                         Obx(
                           () => Text(
-                            "${databaseController.sensorController.hum.value}",
+                            "${databaseController.sensorController.hum.value} %",
                             style: TextStyle(fontSize: 16, color: Colors.grey),
                           ),
                         ),
@@ -97,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                     boxShadow: [
                       BoxShadow(
                         blurRadius: 10,
-                        color: Colors.blue.shade200,
+                        color: cardBackgroundColor,
                         spreadRadius: 4,
                       ),
                     ],

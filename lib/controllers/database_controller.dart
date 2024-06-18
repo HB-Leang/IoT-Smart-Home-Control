@@ -4,6 +4,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/actuator_controller.dart';
 import 'package:smart_home_control/controllers/light_controller.dart';
+import 'package:smart_home_control/controllers/notification_controller.dart';
 import 'package:smart_home_control/controllers/sensor_controller.dart';
 import 'package:smart_home_control/views/error_screen.dart';
 import 'package:smart_home_control/views/home_page.dart';
@@ -15,6 +16,8 @@ class DatabaseController extends GetxController {
   final LightController lightController = Get.put(LightController());
   final SensorController sensorController = Get.put(SensorController());
   final ActuatorController actuatorController = Get.put(ActuatorController());
+  final NotificationController notificationController =
+      Get.put(NotificationController());
   final DatabaseReference database = FirebaseDatabase.instance.ref();
 
   late DatabaseReference light = database.child('smart-home/light');
@@ -106,7 +109,6 @@ class DatabaseController extends GetxController {
 
   void getLightValue(DatabaseEvent snap) {
     Map<dynamic, dynamic> values = snap.snapshot.value as Map<dynamic, dynamic>;
-    // print("light values : $values");
 
     lightController.garage.value = values['garage'];
     lightController.balcony.value = values['balcony'];
@@ -120,17 +122,31 @@ class DatabaseController extends GetxController {
 
   void getSensorValue(DatabaseEvent snap) {
     Map<dynamic, dynamic> values = snap.snapshot.value as Map<dynamic, dynamic>;
-    // print("Sensor value : $values");
+    // print(values['dht']['temp']);
+    if (double.tryParse(values['dht']['temp'].toString()) != null) {
+      sensorController.temp.value = values['dht']['temp'];
+    }
 
-    sensorController.temp.value = double.parse(values['dht']['temp']);
-    sensorController.hum.value = double.parse(values['dht']['hum']);
+    if (double.tryParse(values['dht']['hum'].toString()) != null) {
+      sensorController.hum.value = values['dht']['hum'];
+    }
+    sensorController.flame.value = values['flame'];
+    if (values['flame'] == 1) {
+      notificationController.flameNotification();
+    }
+    sensorController.gas.value = values['gas'];
+    sensorController.rain.value = values['rain'];
   }
 
   void getActuatorsValue(DatabaseEvent snap) {
     Map<dynamic, dynamic> values = snap.snapshot.value as Map<dynamic, dynamic>;
 
     actuatorController.curtain.value = values['curtain'];
-    actuatorController.gate.value = values['gate'];
+    actuatorController.window.value = values['window'];
+
+    actuatorController.getFan('kitchen').value = values['fan']['kitchen'];
+    actuatorController.getFan('bedRoom1').value = values['fan']['bedRoom1'];
+    actuatorController.getFan('bedRoom2').value = values['fan']['bedRoom2'];
 
     actuatorController.doors['balcony']!.value = values['door']['balcony'];
     actuatorController.doors['bedRoom1']!.value = values['door']['bedRoom1'];

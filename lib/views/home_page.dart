@@ -2,6 +2,8 @@ import 'package:awesome_bottom_bar/awesome_bottom_bar.dart';
 import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smart_home_control/controllers/notification_controller.dart';
+import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/views/about_us_screen.dart';
 import 'package:smart_home_control/views/homescreen.dart';
@@ -10,28 +12,15 @@ import 'package:smart_home_control/views/rooms_screen.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-
+  final NotificationController notificationController =
+      Get.put(NotificationController());
   RxInt selected = 0.obs;
   final List pages = [
-    HomeScreen(),
+    const HomeScreen(),
     RoomScreen(),
     OutdoorScreen(),
-    AboutUsScreen(),
+    const AboutUsScreen(),
   ];
-
-  // final List<BottomBarItem> items = [
-  //   BottomBarItem(
-  //     icon: const Icon(Icons.home_sharp),
-  //     title: const Text('Home Control'),
-  //     backgroundColor: Colors.red,
-  //     // selectedIcon: const Icon(Icons.read_more),
-  //   ),
-  //   BottomBarItem(
-  //     icon: const Icon(Icons.room_preferences),
-  //     title: const Text('Room Control'),
-  //     backgroundColor: Colors.orange,
-  //   ),
-  // ];
 
   final List<TabItem> items = const [
     TabItem(
@@ -65,7 +54,8 @@ class HomePage extends StatelessWidget {
           indexSelected: selected.value,
           // paddingVertical: 24,
           onTap: (int index) => {selected.value = index},
-          chipStyle: const ChipStyle(convexBridge: true, background: mainColor),
+          chipStyle:
+              const ChipStyle(convexBridge: false, background: mainColor),
           itemStyle: ItemStyle.circle,
           animated: true,
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 import 'package:smart_home_control/models/my_switch.dart';
 import 'package:smart_home_control/widgets/iot_switch.dart';
@@ -17,6 +18,7 @@ class ControlCard extends StatelessWidget {
     this.borderRadius = 30.0,
     this.activeImage = "assets/icons/light-bulb-on.png",
     this.inactiveImage = "assets/icons/light-bulb-off.png",
+    this.isFan = false,
   });
   final String controlName;
   final MySwitch mySwitch;
@@ -28,6 +30,7 @@ class ControlCard extends StatelessWidget {
   final double borderRadius;
   final String activeImage;
   final String inactiveImage;
+  final bool isFan;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -48,7 +51,7 @@ class ControlCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
                 controlName,
@@ -56,20 +59,36 @@ class ControlCard extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
+              SizedBox(
+                height: 5,
+              ),
               Obx(
                 () => Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    // color: Colors.red,
-                    image: DecorationImage(
-                      image: mySwitch.initValue.value == 1
-                          ? AssetImage(activeImage)
-                          : AssetImage(inactiveImage),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
+                    width: 80,
+                    height: 80,
+                    // color: Colors.black,
+                    alignment: Alignment.center,
+                    child: isFan
+                        ? Lottie.asset(
+                            "assets/animations/fan-spin.json",
+                            fit: BoxFit.cover,
+                            animate:
+                                mySwitch.initValue.value == 1 ? true : false,
+                            repeat: true,
+                          )
+                        : mySwitch.initValue.value == 1
+                            ? Image.asset(
+                                activeImage,
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              )
+                            : Image.asset(
+                                inactiveImage,
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              )),
               ),
             ],
           ),
