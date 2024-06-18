@@ -48,58 +48,65 @@ class ControlCard extends StatelessWidget {
         ],
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                controlName,
-                style: const TextStyle(
-                  fontSize: 20,
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  controlName,
+                  style: const TextStyle(
+                    fontSize: 20,
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 5,
-              ),
-              Obx(
-                () => Container(
-                    width: 80,
-                    height: 80,
-                    // color: Colors.black,
-                    alignment: Alignment.center,
-                    child: isFan
-                        ? Lottie.asset(
-                            "assets/animations/fan-spin.json",
-                            fit: BoxFit.cover,
-                            animate:
-                                mySwitch.initValue.value == 1 ? true : false,
-                            repeat: true,
-                          )
-                        : mySwitch.initValue.value == 1
-                            ? Image.asset(
-                                activeImage,
-                                fit: BoxFit.cover,
-                                width: 60,
-                                height: 60,
-                              )
-                            : Image.asset(
-                                inactiveImage,
-                                fit: BoxFit.cover,
-                                width: 60,
-                                height: 60,
-                              )),
-              ),
-            ],
+                SizedBox(
+                  height: 5,
+                ),
+                Obx(
+                  () => Container(
+                      width: 80,
+                      height: 80,
+                      // color: Colors.black,
+                      alignment: Alignment.center,
+                      child: isFan
+                          ? Lottie.asset(
+                              "assets/animations/fan-spin.json",
+                              fit: BoxFit.cover,
+                              animate:
+                                  mySwitch.initValue.value == 1 ? true : false,
+                              repeat: true,
+                            )
+                          : mySwitch.initValue.value == 1
+                              ? Image.asset(
+                                  activeImage,
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                )
+                              : Image.asset(
+                                  inactiveImage,
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                )),
+                ),
+              ],
+            ),
           ),
-          IoTSwitch(
-            mySwitch: mySwitch,
-            activeChild: activeChild,
-            inactiveChild: inactiveChild,
-            toggleSize: toggleSize,
-            width: width,
-            height: height,
-            borderRadius: borderRadius,
+          SizedBox(
+            width: 170,
+            child: Center(
+              child: IoTSwitch(
+                mySwitch: mySwitch,
+                activeChild: activeChild,
+                inactiveChild: inactiveChild,
+                toggleSize: toggleSize,
+                width: width,
+                height: height,
+                borderRadius: borderRadius,
+              ),
+            ),
           ),
         ],
       ),

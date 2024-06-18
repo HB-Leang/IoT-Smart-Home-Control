@@ -6,6 +6,7 @@ import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/views/bedroom1_screen.dart';
 import 'package:smart_home_control/views/bedroom2_screen.dart';
+import 'package:smart_home_control/views/firstfloor_screen.dart';
 import 'package:smart_home_control/views/garage_screen.dart';
 import 'package:smart_home_control/views/homescreen.dart';
 import 'package:smart_home_control/views/kitchen_screen.dart';
@@ -32,6 +33,15 @@ class RoomScreen extends StatelessWidget {
         fit: BoxFit.cover,
       ),
       text: "Kitchen",
+    ),
+    Tab(
+      icon: Image.asset(
+        "assets/icons/first_floor-icon.png",
+        width: 40,
+        height: 40,
+        fit: BoxFit.cover,
+      ),
+      text: "First Floor",
     ),
     Tab(
       icon: Image.asset(
@@ -93,6 +103,7 @@ class RoomScreen extends StatelessWidget {
                     children: <Widget>[
                       LivingRoom(),
                       KitchenScreen(),
+                      FirstFloorScreen(),
                       BedRoom1Screen(),
                       BedRoom2Screen(),
                       GarageScreen(),
