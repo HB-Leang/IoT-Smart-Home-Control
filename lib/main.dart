@@ -20,13 +20,30 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  AwesomeNotifications().initialize(null, [
-    NotificationChannel(
-      channelKey: "Flame Channel",
-      channelName: "Flame Detected",
-      channelDescription: "There is flame detected in the house",
-    )
-  ]);
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+        channelKey: "Flame Channel",
+        channelName: "Flame Sensor",
+        channelDescription: "Flame detection in the house.",
+        importance: NotificationImportance.High,
+        channelShowBadge: true,
+      ),
+      NotificationChannel(
+        channelKey: "Gas Channel",
+        channelName: "Gas Sensor",
+        channelDescription: "Gas detection in the house.",
+        importance: NotificationImportance.High,
+      ),
+      NotificationChannel(
+        channelKey: "Raindrop Channel",
+        channelName: "Raindrop Sensor",
+        channelDescription: "Raindrop detection.",
+        importance: NotificationImportance.Min,
+      ),
+    ],
+  );
   runApp(MyApp());
 }
 

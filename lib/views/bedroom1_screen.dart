@@ -38,7 +38,7 @@ class BedRoom1Screen extends StatelessWidget {
                   reference: databaseController.actuators,
                   childName: "fan/bedRoom1",
                   initValue:
-                      databaseController.actuatorController.getFan("kitchen"),
+                      databaseController.actuatorController.getFan("bedRoom1"),
                 ),
                 // activeImage: 'assets/icons/garage-open.png',
                 // inactiveImage: 'assets/icons/garage-close.png',

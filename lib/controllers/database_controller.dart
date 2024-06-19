@@ -122,20 +122,27 @@ class DatabaseController extends GetxController {
 
   void getSensorValue(DatabaseEvent snap) {
     Map<dynamic, dynamic> values = snap.snapshot.value as Map<dynamic, dynamic>;
-    // print(values['dht']['temp']);
     if (double.tryParse(values['dht']['temp'].toString()) != null) {
-      sensorController.temp.value = values['dht']['temp'];
+      sensorController.temp.value =
+          double.parse(values['dht']['temp'].toString());
     }
 
     if (double.tryParse(values['dht']['hum'].toString()) != null) {
-      sensorController.hum.value = values['dht']['hum'];
+      sensorController.hum.value =
+          double.parse(values['dht']['hum'].toString());
     }
     sensorController.flame.value = values['flame'];
     if (values['flame'] == 1) {
       notificationController.flameNotification();
     }
     sensorController.gas.value = values['gas'];
+    if (values['gas'] == 1) {
+      notificationController.gasNotification();
+    }
     sensorController.rain.value = values['rain'];
+    if (values['rain'] == 1) {
+      notificationController.rainNotification();
+    }
   }
 
   void getActuatorsValue(DatabaseEvent snap) {

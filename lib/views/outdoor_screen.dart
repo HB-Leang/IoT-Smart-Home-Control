@@ -4,6 +4,8 @@ import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/models/my_switch.dart';
 import 'package:smart_home_control/widgets/control_card.dart';
 
+import '../models/size.dart';
+
 class OutdoorScreen extends StatelessWidget {
   OutdoorScreen({super.key});
   final DatabaseController databaseController = Get.put(DatabaseController());
@@ -20,28 +22,55 @@ class OutdoorScreen extends StatelessWidget {
         ),
       )),
       body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          ControlCard(
-            controlName: "Balcony Light",
-            mySwitch: MySwitch(
-              reference: databaseController.light,
-              childName: "balcony",
-              initValue: databaseController.lightController.getLight("balcony"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ControlCard(
+              controlName: "Balcony Light",
+              width: switchSize['light']!['width']!,
+              height: switchSize['light']!['height']!,
+              toggleSize: switchSize['light']!['toggleSize'],
+              mySwitch: MySwitch(
+                reference: databaseController.light,
+                childName: "balcony",
+                initValue:
+                    databaseController.lightController.getLight("balcony"),
+              ),
             ),
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          ControlCard(
-            controlName: "Garage Front Light",
-            mySwitch: MySwitch(
-              reference: databaseController.light,
-              childName: "garageFront",
-              initValue:
-                  databaseController.lightController.getLight("garageFront"),
+            const SizedBox(
+              height: 30,
             ),
-          ),
-        ]),
+            ControlCard(
+              controlName: "Garage Front Light",
+              width: switchSize['light']!['width']!,
+              height: switchSize['light']!['height']!,
+              toggleSize: switchSize['light']!['toggleSize'],
+              mySwitch: MySwitch(
+                reference: databaseController.light,
+                childName: "garageFront",
+                initValue:
+                    databaseController.lightController.getLight("garageFront"),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+            ControlCard(
+              controlName: "Balcony Light",
+              width: switchSize['door']!['width']!,
+              height: switchSize['door']!['height']!,
+              toggleSize: switchSize['door']!['toggleSize'],
+              activeChild: "OPEN",
+              inactiveChild: "CLOSE",
+              mySwitch: MySwitch(
+                reference: databaseController.actuators,
+                childName: "garage",
+                initValue:
+                    databaseController.actuatorController.getDoor("garage"),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

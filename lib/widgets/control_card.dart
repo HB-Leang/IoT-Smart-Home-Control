@@ -57,10 +57,10 @@ class ControlCard extends StatelessWidget {
                 Text(
                   controlName,
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Obx(
@@ -95,7 +95,7 @@ class ControlCard extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 170,
+            width: MediaQuery.of(context).size.width * 0.4,
             child: Center(
               child: IoTSwitch(
                 mySwitch: mySwitch,
