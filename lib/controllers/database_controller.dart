@@ -20,6 +20,7 @@ class DatabaseController extends GetxController {
       Get.put(NotificationController());
   final DatabaseReference database = FirebaseDatabase.instance.ref();
 
+  late DatabaseReference mode = database.child("smart-home/mode");
   late DatabaseReference light = database.child('smart-home/light');
   late DatabaseReference sensor = database.child('smart-home/sensor');
   late DatabaseReference actuators = database.child('smart-home/actuators');

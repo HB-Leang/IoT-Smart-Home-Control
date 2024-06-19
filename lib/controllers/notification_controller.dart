@@ -18,10 +18,10 @@ class NotificationController extends GetxController {
   void flameNotification() {
     AwesomeNotifications().createNotification(
       content: NotificationContent(
-        id: 1,
+        id: createUniqueId(),
         channelKey: "Flame Channel",
-        title: "Flame Detected!",
-        body: "There is flame detected in the house!!",
+        title: "Flame Detected! 🔥🔥🔥",
+        body: "There is flame detected in the house!!🧯🧯",
       ),
     );
   }
@@ -29,22 +29,25 @@ class NotificationController extends GetxController {
   void gasNotification() {
     AwesomeNotifications().createNotification(
       content: NotificationContent(
-          id: 2,
+          id: createUniqueId(),
           channelKey: "Gas Channel",
-          title: "Gas Detected!",
-          body:
-              "There is gas detected in the kitchen!! ${Emojis.activites_balloon}"),
+          title: "Gas Detected! ⚠️ ⚠️",
+          body: "There is gas detected in the kitchen!!"),
     );
   }
 
   void rainNotification() {
     AwesomeNotifications().createNotification(
       content: NotificationContent(
-          id: 3,
+          id: createUniqueId(),
           channelKey: "Raindrop Channel",
-          title: "Raindrop Detected!",
+          title: "Raindrop Detected! 🌧️🌧️🌧️",
           body:
-              "Raindrop detected on the sensor. Perfoming required tasks in the house."),
+              "Raindrop detected on the sensor.💧\nPerfoming required tasks in the house."),
     );
+  }
+
+  int createUniqueId() {
+    return DateTime.now().millisecondsSinceEpoch.remainder(10000);
   }
 }

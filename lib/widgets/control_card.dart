@@ -51,23 +51,25 @@ class ControlCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  controlName,
-                  style: const TextStyle(
-                    fontSize: 18,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    controlName,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Obx(
-                  () => Container(
-                      width: 80,
-                      height: 80,
-                      // color: Colors.black,
+                  // const SizedBox(
+                  //   height: 5,
+                  // ),
+                  Obx(
+                    () => Container(
+                      width: 70,
+                      height: 70,
                       alignment: Alignment.center,
                       child: isFan
                           ? Lottie.asset(
@@ -89,9 +91,11 @@ class ControlCard extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   width: 60,
                                   height: 60,
-                                )),
-                ),
-              ],
+                                ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           SizedBox(

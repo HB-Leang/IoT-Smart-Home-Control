@@ -21,56 +21,82 @@ class OutdoorScreen extends StatelessWidget {
           fontStyle: FontStyle.italic,
         ),
       )),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ControlCard(
-              controlName: "Balcony Light",
-              width: switchSize['light']!['width']!,
-              height: switchSize['light']!['height']!,
-              toggleSize: switchSize['light']!['toggleSize'],
-              mySwitch: MySwitch(
-                reference: databaseController.light,
-                childName: "balcony",
-                initValue:
-                    databaseController.lightController.getLight("balcony"),
-              ),
+      body: ListView(
+        physics: const BouncingScrollPhysics(),
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ControlCard(
+                  controlName: "Front Door Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "frontDoor",
+                    initValue: databaseController.lightController
+                        .getLight("frontDoor"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ControlCard(
+                  controlName: "Balcony Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "balcony",
+                    initValue:
+                        databaseController.lightController.getLight("balcony"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ControlCard(
+                  controlName: "Garage Front Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "garageFront",
+                    initValue: databaseController.lightController
+                        .getLight("garageFront"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ControlCard(
+                  controlName: "Garage",
+                  width: switchSize['door']!['width']!,
+                  height: switchSize['door']!['height']!,
+                  toggleSize: switchSize['door']!['toggleSize'],
+                  activeChild: "OPEN",
+                  inactiveChild: "CLOSE",
+                  activeImage: "assets/icons/garage-open.png",
+                  inactiveImage: "assets/icons/garage-close.png",
+                  mySwitch: MySwitch(
+                    reference: databaseController.actuators,
+                    childName: "door/garage",
+                    initValue:
+                        databaseController.actuatorController.getDoor("garage"),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
             ),
-            const SizedBox(
-              height: 30,
-            ),
-            ControlCard(
-              controlName: "Garage Front Light",
-              width: switchSize['light']!['width']!,
-              height: switchSize['light']!['height']!,
-              toggleSize: switchSize['light']!['toggleSize'],
-              mySwitch: MySwitch(
-                reference: databaseController.light,
-                childName: "garageFront",
-                initValue:
-                    databaseController.lightController.getLight("garageFront"),
-              ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            ControlCard(
-              controlName: "Balcony Light",
-              width: switchSize['door']!['width']!,
-              height: switchSize['door']!['height']!,
-              toggleSize: switchSize['door']!['toggleSize'],
-              activeChild: "OPEN",
-              inactiveChild: "CLOSE",
-              mySwitch: MySwitch(
-                reference: databaseController.actuators,
-                childName: "garage",
-                initValue:
-                    databaseController.actuatorController.getDoor("garage"),
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

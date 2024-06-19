@@ -8,13 +8,11 @@ import 'package:smart_home_control/views/bedroom1_screen.dart';
 import 'package:smart_home_control/views/bedroom2_screen.dart';
 import 'package:smart_home_control/views/firstfloor_screen.dart';
 import 'package:smart_home_control/views/garage_screen.dart';
-import 'package:smart_home_control/views/homescreen.dart';
 import 'package:smart_home_control/views/kitchen_screen.dart';
 import 'package:smart_home_control/views/living_room_page.dart';
 
 class RoomScreen extends StatelessWidget {
   RoomScreen({super.key});
-  // RxInt selectedIndex = 0.obs;
   final tabList = [
     Tab(
       icon: Image.asset(
@@ -107,24 +105,6 @@ class RoomScreen extends StatelessWidget {
                       BedRoom1Screen(),
                       BedRoom2Screen(),
                       GarageScreen(),
-                      // Center(
-                      //   child: Icon(Icons.directions_car),
-                      // ),
-                      // Center(
-                      //   child: Icon(Icons.directions_transit),
-                      // ),
-                      // Center(
-                      //   child: Icon(Icons.directions_bike),
-                      // ),
-                      // Center(
-                      //   child: Icon(Icons.directions_car),
-                      // ),
-                      // Center(
-                      //   child: Icon(Icons.directions_transit),
-                      // ),
-                      // Center(
-                      //   child: Icon(Icons.directions_bike),
-                      // ),
                     ],
                   ),
                 ),

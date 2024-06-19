@@ -14,6 +14,7 @@ class GarageScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: ListView(
+        physics: const BouncingScrollPhysics(),
         children: [
           Column(
             children: [

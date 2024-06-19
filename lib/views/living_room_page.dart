@@ -23,74 +23,18 @@ class LivingRoom extends StatelessWidget {
             child: Column(
               children: [
                 ControlCard(
-                  controlName: "Bedroom Door",
-                  activeImage: "assets/icons/door-open.png",
-                  inactiveImage: "assets/icons/door-close.png",
-                  activeChild: "OPEN",
-                  inactiveChild: "CLOSE",
-                  width: switchSize['door']!['width']!,
-                  height: switchSize['door']!['height']!,
-                  toggleSize: switchSize['door']!['toggleSize'],
-                  mySwitch: MySwitch(
-                      reference: databaseController.actuators,
-                      childName: 'door/bedRoom1',
-                      initValue: databaseController.actuatorController
-                          .getDoor('bedRoom1')),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                ControlCard(
-                  controlName: "Garage Light",
+                  controlName: "Living Room Light",
                   width: switchSize['light']!['width']!,
                   height: switchSize['light']!['height']!,
                   toggleSize: switchSize['light']!['toggleSize'],
                   mySwitch: MySwitch(
                     reference: databaseController.light,
-                    childName: "garage",
-                    initValue: databaseController.lightController.garage,
+                    childName: "livingRoom",
+                    initValue: databaseController.lightController
+                        .getLight("livingRoom"),
                   ),
                 ),
-                SizedBox(
-                  height: 30,
-                ),
-                ControlCard(
-                  controlName: "Garage Door",
-                  mySwitch: MySwitch(
-                    reference: databaseController.actuators,
-                    childName: "door/garage",
-                    initValue:
-                        databaseController.actuatorController.getDoor('garage'),
-                  ),
-                  activeImage: 'assets/icons/garage-open.png',
-                  inactiveImage: 'assets/icons/garage-close.png',
-                  activeChild: "OPEN",
-                  inactiveChild: "CLOSE",
-                  width: switchSize['door']!['width']!,
-                  height: switchSize['door']!['height']!,
-                  toggleSize: switchSize['door']!['toggleSize']!,
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                ControlCard(
-                  controlName: "Kitchen Fan",
-                  mySwitch: MySwitch(
-                    reference: databaseController.actuators,
-                    childName: "fan/kitchen",
-                    initValue:
-                        databaseController.actuatorController.getFan("kitchen"),
-                  ),
-                  // activeImage: 'assets/icons/garage-open.png',
-                  // inactiveImage: 'assets/icons/garage-close.png',
-                  activeChild: "ON",
-                  inactiveChild: "OFF",
-                  width: switchSize['light']!['width']!,
-                  height: switchSize['light']!['height']!,
-                  toggleSize: switchSize['light']!['toggleSize']!,
-                  isFan: true,
-                ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 ControlCard(
@@ -108,23 +52,8 @@ class LivingRoom extends StatelessWidget {
                   height: switchSize['door']!['height']!,
                   toggleSize: switchSize['door']!['toggleSize']!,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
-                ),
-                ControlCard(
-                  controlName: "Window",
-                  mySwitch: MySwitch(
-                    reference: databaseController.actuators,
-                    childName: "window",
-                    initValue: databaseController.actuatorController.window,
-                  ),
-                  activeImage: 'assets/icons/window3-open.png',
-                  inactiveImage: 'assets/icons/window3-close.png',
-                  activeChild: "OPEN",
-                  inactiveChild: "CLOSE",
-                  width: switchSize['door']!['width']!,
-                  height: switchSize['door']!['height']!,
-                  toggleSize: switchSize['door']!['toggleSize']!,
                 ),
               ],
             ),
