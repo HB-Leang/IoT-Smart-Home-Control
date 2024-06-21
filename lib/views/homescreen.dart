@@ -1,6 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
@@ -89,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                     },
                                   ),
                                   SizedBox(
-                                    width: 150,
+                                    width: 170,
                                     child: Text(
                                       "${weatherController.weather.value!.weather[0].description.capitalize}",
                                       style: const TextStyle(
@@ -170,9 +167,10 @@ class HomeScreen extends StatelessWidget {
                                           await databaseController.mode.set(3);
                                           isButtonClicked(true);
                                           showModeChangedSnackBar(
-                                              "Mode Changed",
-                                              "Sleep mode activated.\nPerforming needed tasks.",
-                                              const Icon(Icons.night_shelter));
+                                            "Mode Changed",
+                                            "Sleep mode activated.\nPerforming needed tasks.",
+                                            Icons.night_shelter,
+                                          );
                                           Future.delayed(
                                                   const Duration(seconds: 4))
                                               .whenComplete(
@@ -188,10 +186,10 @@ class HomeScreen extends StatelessWidget {
                                           await databaseController.mode.set(1);
                                           isButtonClicked(true);
                                           showModeChangedSnackBar(
-                                              "Mode Changed",
-                                              "Day mode activated.\nPerforming needed tasks.",
-                                              const Icon(
-                                                  Icons.wb_sunny_outlined));
+                                            "Mode Changed",
+                                            "Day mode activated.\nPerforming needed tasks.",
+                                            Icons.wb_sunny_outlined,
+                                          );
                                           Future.delayed(
                                                   const Duration(seconds: 4))
                                               .whenComplete(
@@ -207,10 +205,10 @@ class HomeScreen extends StatelessWidget {
                                           await databaseController.mode.set(2);
                                           isButtonClicked(true);
                                           showModeChangedSnackBar(
-                                              "Mode Changed",
-                                              "Night mode activated.\nPerforming needed tasks.",
-                                              const Icon(
-                                                  Icons.nights_stay_outlined));
+                                            "Mode Changed",
+                                            "Night mode activated.\nPerforming needed tasks.",
+                                            Icons.nights_stay_outlined,
+                                          );
                                           Future.delayed(
                                                   const Duration(seconds: 4))
                                               .whenComplete(
@@ -336,11 +334,14 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void showModeChangedSnackBar(String title, String message, Icon icon) {
+  void showModeChangedSnackBar(String title, String message, IconData icon) {
     Get.showSnackbar(
       GetSnackBar(
         backgroundColor: mainColor,
-        icon: icon,
+        icon: Icon(
+          icon,
+          size: 36,
+        ),
         title: title,
         message: message,
         snackPosition: SnackPosition.TOP,

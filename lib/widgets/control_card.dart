@@ -60,7 +60,7 @@ class ControlCard extends StatelessWidget {
                     controlName,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 17,
                     ),
                   ),
                   // const SizedBox(

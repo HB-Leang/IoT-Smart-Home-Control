@@ -23,7 +23,7 @@ class LivingRoom extends StatelessWidget {
             child: Column(
               children: [
                 ControlCard(
-                  controlName: "Living Room Light",
+                  controlName: "Living Room  Light",
                   width: switchSize['light']!['width']!,
                   height: switchSize['light']!['height']!,
                   toggleSize: switchSize['light']!['toggleSize'],

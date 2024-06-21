@@ -2,7 +2,6 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 
-import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';

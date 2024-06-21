@@ -3,7 +3,6 @@ import 'package:awesome_bottom_bar/widgets/inspired/inspired.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/notification_controller.dart';
-import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/models/color.dart';
 import 'package:smart_home_control/views/about_us_screen.dart';
 import 'package:smart_home_control/views/homescreen.dart';
@@ -19,7 +18,7 @@ class HomePage extends StatelessWidget {
     const HomeScreen(),
     RoomScreen(),
     OutdoorScreen(),
-    const AboutUsScreen(),
+    AboutUsScreen(),
   ];
 
   final List<TabItem> items = const [
@@ -36,7 +35,7 @@ class HomePage extends StatelessWidget {
       title: 'Outdoor',
     ),
     TabItem(
-      icon: Icons.person,
+      icon: Icons.people,
       title: 'About Us',
     ),
   ];
@@ -53,7 +52,9 @@ class HomePage extends StatelessWidget {
           colorSelected: Colors.white,
           indexSelected: selected.value,
           // paddingVertical: 24,
-          onTap: (int index) => {selected.value = index},
+          onTap: (int index) => {
+            selected.value = index,
+          },
           chipStyle:
               const ChipStyle(convexBridge: false, background: mainColor),
           itemStyle: ItemStyle.circle,

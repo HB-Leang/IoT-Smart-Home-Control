@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
@@ -32,6 +33,11 @@ class GarageScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
+              Container(
+                height: 200,
+                color: Colors.red,
+                child: Image.asset("assets/icons/parking-available.png"),
+              )
             ],
           )
         ],

@@ -1,19 +1,14 @@
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/firebase_options.dart';
 import 'package:smart_home_control/models/color.dart';
-import 'package:smart_home_control/views/home_page.dart';
-import 'package:smart_home_control/views/homescreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

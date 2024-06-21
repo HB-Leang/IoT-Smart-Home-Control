@@ -49,6 +49,28 @@ class FirstFloorScreen extends StatelessWidget {
                 height: switchSize['door']!['height']!,
                 toggleSize: switchSize['door']!['toggleSize']!,
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              ControlCard(
+                controlName: "Balcony Door",
+                mySwitch: MySwitch(
+                  reference: databaseController.actuators,
+                  childName: "door/balcony",
+                  initValue:
+                      databaseController.actuatorController.getDoor("balcony"),
+                ),
+                activeImage: 'assets/icons/door-open.png',
+                inactiveImage: 'assets/icons/door-close.png',
+                activeChild: "OPEN",
+                inactiveChild: "CLOSE",
+                width: switchSize['door']!['width']!,
+                height: switchSize['door']!['height']!,
+                toggleSize: switchSize['door']!['toggleSize']!,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
             ],
           )
         ],
