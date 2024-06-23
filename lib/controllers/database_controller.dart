@@ -8,7 +8,6 @@ import 'package:smart_home_control/controllers/notification_controller.dart';
 import 'package:smart_home_control/controllers/sensor_controller.dart';
 import 'package:smart_home_control/views/error_screen.dart';
 import 'package:smart_home_control/views/home_page.dart';
-import 'package:smart_home_control/views/homescreen.dart';
 
 class DatabaseController extends GetxController {
   bool isConected = false;
@@ -38,7 +37,7 @@ class DatabaseController extends GetxController {
       if (isConected == true) {
         Get.offAll(() => HomePage());
       } else {
-        Get.offAll(() => ErrorConnect());
+        Get.offAll(() => const ErrorConnect());
       }
     });
   }
@@ -119,6 +118,7 @@ class DatabaseController extends GetxController {
     lightController.kitchen.value = values['kitchen'];
     lightController.livingRoom.value = values['livingRoom'];
     lightController.garageFront.value = values['garageFront'];
+    lightController.frontDoor.value = values['frontDoor'];
   }
 
   void getSensorValue(DatabaseEvent snap) {
@@ -144,6 +144,8 @@ class DatabaseController extends GetxController {
     if (values['rain'] == 1) {
       notificationController.rainNotification();
     }
+    sensorController.car1.value = values['car1'];
+    sensorController.car2.value = values['car2'];
   }
 
   void getActuatorsValue(DatabaseEvent snap) {

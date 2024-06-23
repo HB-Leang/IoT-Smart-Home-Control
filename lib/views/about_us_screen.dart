@@ -30,7 +30,7 @@ class AboutUsScreen extends StatelessWidget {
       name: "Ho Daneng",
       description: "null too",
       position: "Member",
-      img: "assets/images/veng_rocky.jpg",
+      img: "assets/images/ho_daneng.jpg",
     ),
     Member(
       name: "Ho Lydavid",
@@ -69,47 +69,7 @@ class AboutUsScreen extends StatelessWidget {
                 itemBuilder: (context, index) => GroupMemberCard(
                   member: groupMembers[index],
                 ),
-              )
-              // GroupMemberCard(
-              //   member: Member(
-              //     name: "Heng Kakada",
-              //     description: "Developer",
-              //     position: "Team Leader",
-              //     img: "assets/images/heng_kakada.jpg",
-              //   ),
-              // ),
-              // GroupMemberCard(
-              //   member: Member(
-              //     name: "Houy Norin",
-              //     description: "Som null sin",
-              //     position: "Member",
-              //     img: "assets/images/bro_rin.jpg",
-              //   ),
-              // ),
-              // GroupMemberCard(
-              //   member: Member(
-              //     name: "Veng Rocky",
-              //     description: "null too",
-              //     position: "Member",
-              //     img: "assets/images/veng_rocky.jpg",
-              //   ),
-              // ),
-              // GroupMemberCard(
-              //   member: Member(
-              //     name: "Ho Daneng",
-              //     description: "null too",
-              //     position: "Member",
-              //     img: "assets/images/veng_rocky.jpg",
-              //   ),
-              // ),
-              // GroupMemberCard(
-              //   member: Member(
-              //     name: "Ho Lydavid",
-              //     description: "Bro do nothing",
-              //     position: "Member",
-              //     img: "assets/images/ho_lydavid.jpg",
-              //   ),
-              // ),
+              ),
             ],
           ),
         ),

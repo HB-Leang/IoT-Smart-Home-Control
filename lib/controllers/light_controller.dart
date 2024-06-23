@@ -10,6 +10,7 @@ class LightController extends GetxController {
   RxInt kitchen = 0.obs;
   RxInt livingRoom = 0.obs;
   RxInt garageFront = 0.obs;
+  RxInt frontDoor = 0.obs;
   DatabaseReference lightPath =
       FirebaseDatabase.instance.ref().child('smart-home/light');
 
@@ -25,6 +26,7 @@ class LightController extends GetxController {
       'kitchen': kitchen,
       'livingRoom': livingRoom,
       'garageFront': garageFront,
+      'frontDoor': frontDoor,
     };
   }
 

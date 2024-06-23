@@ -6,4 +6,6 @@ class SensorController extends GetxController {
   RxInt flame = 0.obs;
   RxInt gas = 0.obs;
   RxInt rain = 0.obs;
+  RxInt car1 = 0.obs;
+  RxInt car2 = 0.obs;
 }

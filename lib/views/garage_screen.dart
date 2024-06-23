@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:smart_home_control/controllers/database_controller.dart';
 
@@ -33,11 +32,89 @@ class GarageScreen extends StatelessWidget {
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                height: 200,
-                color: Colors.red,
-                child: Image.asset("assets/icons/parking-available.png"),
-              )
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.3,
+                // color: Colors.red,
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Obx(
+                          () => Column(
+                            children: [
+                              Text(
+                                "First Slot",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: databaseController
+                                              .sensorController.car1.value ==
+                                          1
+                                      ? Colors.red
+                                      : Colors.green,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Expanded(
+                                child:
+                                    databaseController
+                                                .sensorController.car1.value ==
+                                            1
+                                        ? Image.asset(
+                                            "assets/icons/parking-not-available.png")
+                                        : Image.asset(
+                                            "assets/icons/parking-available.png"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10.0),
+                        child: Obx(
+                          () => Column(
+                            children: [
+                              Text(
+                                "Second Slot",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 16,
+                                  color: databaseController
+                                              .sensorController.car2.value ==
+                                          1
+                                      ? Colors.red
+                                      : Colors.green,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Expanded(
+                                child:
+                                    databaseController
+                                                .sensorController.car2.value ==
+                                            1
+                                        ? Image.asset(
+                                            "assets/icons/parking-not-available.png")
+                                        : Image.asset(
+                                            "assets/icons/parking-available.png"),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
             ],
           )
         ],
