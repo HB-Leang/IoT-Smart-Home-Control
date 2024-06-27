@@ -16,62 +16,65 @@ class BedRoom1Screen extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Column(
-            children: [
-              ControlCard(
-                controlName: "Bedroom Light",
-                width: switchSize['light']!['width']!,
-                height: switchSize['light']!['height']!,
-                toggleSize: switchSize['light']!['toggleSize'],
-                mySwitch: MySwitch(
-                  reference: databaseController.light,
-                  childName: "bedRoom1",
-                  initValue:
-                      databaseController.lightController.getLight("bedRoom1"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Column(
+              children: [
+                ControlCard(
+                  controlName: "Bedroom Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "bedRoom1",
+                    initValue:
+                        databaseController.lightController.getLight("bedRoom1"),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ControlCard(
-                controlName: "Bedroom Fan",
-                mySwitch: MySwitch(
-                  reference: databaseController.actuators,
-                  childName: "fan/bedRoom1",
-                  initValue:
-                      databaseController.actuatorController.getFan("bedRoom1"),
+                const SizedBox(
+                  height: 30,
                 ),
-                // activeImage: 'assets/icons/garage-open.png',
-                // inactiveImage: 'assets/icons/garage-close.png',
-                activeChild: "ON",
-                inactiveChild: "OFF",
-                width: switchSize['light']!['width']!,
-                height: switchSize['light']!['height']!,
-                toggleSize: switchSize['light']!['toggleSize']!,
-                isFan: true,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ControlCard(
-                controlName: "Bedroom Door",
-                activeImage: "assets/icons/door-open.png",
-                inactiveImage: "assets/icons/door-close.png",
-                activeChild: "OPEN",
-                inactiveChild: "CLOSE",
-                width: switchSize['door']!['width']!,
-                height: switchSize['door']!['height']!,
-                toggleSize: switchSize['door']!['toggleSize'],
-                mySwitch: MySwitch(
+                ControlCard(
+                  controlName: "Bedroom Fan",
+                  mySwitch: MySwitch(
                     reference: databaseController.actuators,
-                    childName: 'door/bedRoom1',
+                    childName: "fan/bedRoom1",
                     initValue: databaseController.actuatorController
-                        .getDoor('bedRoom1')),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
+                        .getFan("bedRoom1"),
+                  ),
+                  // activeImage: 'assets/icons/garage-open.png',
+                  // inactiveImage: 'assets/icons/garage-close.png',
+                  activeChild: "ON",
+                  inactiveChild: "OFF",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize']!,
+                  isFan: true,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ControlCard(
+                  controlName: "Bedroom Door",
+                  activeImage: "assets/icons/door-open.png",
+                  inactiveImage: "assets/icons/door-close.png",
+                  activeChild: "OPEN",
+                  inactiveChild: "CLOSE",
+                  width: switchSize['door']!['width']!,
+                  height: switchSize['door']!['height']!,
+                  toggleSize: switchSize['door']!['toggleSize'],
+                  mySwitch: MySwitch(
+                      reference: databaseController.actuators,
+                      childName: 'door/bedRoom1',
+                      initValue: databaseController.actuatorController
+                          .getDoor('bedRoom1')),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           )
         ],
       ),

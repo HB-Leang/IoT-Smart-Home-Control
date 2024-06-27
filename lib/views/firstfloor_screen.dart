@@ -17,61 +17,64 @@ class FirstFloorScreen extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Column(
-            children: [
-              ControlCard(
-                controlName: "First Floor Light",
-                width: switchSize['light']!['width']!,
-                height: switchSize['light']!['height']!,
-                toggleSize: switchSize['light']!['toggleSize'],
-                mySwitch: MySwitch(
-                  reference: databaseController.light,
-                  childName: "firstFloor",
-                  initValue:
-                      databaseController.lightController.getLight("firstFloor"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Column(
+              children: [
+                ControlCard(
+                  controlName: "First Floor Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "firstFloor",
+                    initValue: databaseController.lightController
+                        .getLight("firstFloor"),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ControlCard(
-                controlName: "Window",
-                mySwitch: MySwitch(
-                  reference: databaseController.actuators,
-                  childName: "window",
-                  initValue: databaseController.actuatorController.window,
+                const SizedBox(
+                  height: 30,
                 ),
-                activeImage: 'assets/icons/window3-open.png',
-                inactiveImage: 'assets/icons/window3-close.png',
-                activeChild: "OPEN",
-                inactiveChild: "CLOSE",
-                width: switchSize['door']!['width']!,
-                height: switchSize['door']!['height']!,
-                toggleSize: switchSize['door']!['toggleSize']!,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ControlCard(
-                controlName: "Balcony Door",
-                mySwitch: MySwitch(
-                  reference: databaseController.actuators,
-                  childName: "door/balcony",
-                  initValue:
-                      databaseController.actuatorController.getDoor("balcony"),
+                ControlCard(
+                  controlName: "Window",
+                  mySwitch: MySwitch(
+                    reference: databaseController.actuators,
+                    childName: "window",
+                    initValue: databaseController.actuatorController.window,
+                  ),
+                  activeImage: 'assets/icons/window3-open.png',
+                  inactiveImage: 'assets/icons/window3-close.png',
+                  activeChild: "OPEN",
+                  inactiveChild: "CLOSE",
+                  width: switchSize['door']!['width']!,
+                  height: switchSize['door']!['height']!,
+                  toggleSize: switchSize['door']!['toggleSize']!,
                 ),
-                activeImage: 'assets/icons/door-open.png',
-                inactiveImage: 'assets/icons/door-close.png',
-                activeChild: "OPEN",
-                inactiveChild: "CLOSE",
-                width: switchSize['door']!['width']!,
-                height: switchSize['door']!['height']!,
-                toggleSize: switchSize['door']!['toggleSize']!,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
+                const SizedBox(
+                  height: 30,
+                ),
+                ControlCard(
+                  controlName: "Balcony Door",
+                  mySwitch: MySwitch(
+                    reference: databaseController.actuators,
+                    childName: "door/balcony",
+                    initValue: databaseController.actuatorController
+                        .getDoor("balcony"),
+                  ),
+                  activeImage: 'assets/icons/door-open.png',
+                  inactiveImage: 'assets/icons/door-close.png',
+                  activeChild: "OPEN",
+                  inactiveChild: "CLOSE",
+                  width: switchSize['door']!['width']!,
+                  height: switchSize['door']!['height']!,
+                  toggleSize: switchSize['door']!['toggleSize']!,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           )
         ],
       ),

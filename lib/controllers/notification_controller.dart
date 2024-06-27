@@ -11,6 +11,7 @@ class NotificationController extends GetxController {
         AwesomeNotifications().requestPermissionToSendNotifications();
       }
     });
+    _resetBadgeCount();
     super.onInit();
   }
 
@@ -48,5 +49,9 @@ class NotificationController extends GetxController {
 
   int createUniqueId() {
     return DateTime.now().millisecondsSinceEpoch.remainder(10000);
+  }
+
+  void _resetBadgeCount() {
+    AwesomeNotifications().resetGlobalBadge();
   }
 }

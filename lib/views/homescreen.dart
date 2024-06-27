@@ -164,7 +164,7 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       GestureDetector(
                                         onTap: () async {
-                                          await databaseController.mode.set(3);
+                                          await databaseController.mode.set(0);
                                           isButtonClicked(true);
                                           showModeChangedSnackBar(
                                             "Mode Changed",
@@ -341,6 +341,7 @@ class HomeScreen extends StatelessWidget {
         icon: Icon(
           icon,
           size: 36,
+          color: Colors.white,
         ),
         title: title,
         message: message,

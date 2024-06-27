@@ -15,10 +15,10 @@ class AboutUsScreen extends StatelessWidget {
       img: "assets/images/heng_kakada.jpg",
     ),
     Member(
-      name: "Houy Norin",
+      name: "Heng Bunleang",
       description: "Som null sin",
       position: "Member",
-      img: "assets/images/bro_rin.jpg",
+      img: "assets/images/heng_bunleang.jpg",
     ),
     Member(
       name: "Veng Rocky",

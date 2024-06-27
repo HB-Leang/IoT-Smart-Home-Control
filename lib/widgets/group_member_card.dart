@@ -49,17 +49,17 @@ class GroupMemberCard extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.amberAccent),
                           ),
-                          const SizedBox(
-                            height: 5.0,
-                          ),
-                          Text(
-                            member.description,
-                            style: const TextStyle(
-                                fontSize: 14, color: Colors.white),
-                            softWrap: true,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          )
+                          // const SizedBox(
+                          //   height: 5.0,
+                          // ),
+                          // Text(
+                          //   member.description,
+                          //   style: const TextStyle(
+                          //       fontSize: 14, color: Colors.white),
+                          //   softWrap: true,
+                          //   maxLines: 2,
+                          //   overflow: TextOverflow.ellipsis,
+                          // )
                         ],
                       ),
                     ),

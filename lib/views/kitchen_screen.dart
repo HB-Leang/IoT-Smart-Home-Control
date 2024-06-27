@@ -17,44 +17,47 @@ class KitchenScreen extends StatelessWidget {
       child: ListView(
         physics: const BouncingScrollPhysics(),
         children: [
-          Column(
-            children: [
-              ControlCard(
-                controlName: "Kitchen Light",
-                width: switchSize['light']!['width']!,
-                height: switchSize['light']!['height']!,
-                toggleSize: switchSize['light']!['toggleSize'],
-                mySwitch: MySwitch(
-                  reference: databaseController.light,
-                  childName: "kitchen",
-                  initValue:
-                      databaseController.lightController.getLight("kitchen"),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10.0),
+            child: Column(
+              children: [
+                ControlCard(
+                  controlName: "Kitchen Light",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize'],
+                  mySwitch: MySwitch(
+                    reference: databaseController.light,
+                    childName: "kitchen",
+                    initValue:
+                        databaseController.lightController.getLight("kitchen"),
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              ControlCard(
-                controlName: "Kitchen Fan",
-                mySwitch: MySwitch(
-                  reference: databaseController.actuators,
-                  childName: "fan/kitchen",
-                  initValue:
-                      databaseController.actuatorController.getFan("kitchen"),
+                const SizedBox(
+                  height: 30,
                 ),
-                // activeImage: 'assets/icons/garage-open.png',
-                // inactiveImage: 'assets/icons/garage-close.png',
-                activeChild: "ON",
-                inactiveChild: "OFF",
-                width: switchSize['light']!['width']!,
-                height: switchSize['light']!['height']!,
-                toggleSize: switchSize['light']!['toggleSize']!,
-                isFan: true,
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
+                ControlCard(
+                  controlName: "Kitchen Fan",
+                  mySwitch: MySwitch(
+                    reference: databaseController.actuators,
+                    childName: "fan/kitchen",
+                    initValue:
+                        databaseController.actuatorController.getFan("kitchen"),
+                  ),
+                  // activeImage: 'assets/icons/garage-open.png',
+                  // inactiveImage: 'assets/icons/garage-close.png',
+                  activeChild: "ON",
+                  inactiveChild: "OFF",
+                  width: switchSize['light']!['width']!,
+                  height: switchSize['light']!['height']!,
+                  toggleSize: switchSize['light']!['toggleSize']!,
+                  isFan: true,
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
           ),
         ],
       ),

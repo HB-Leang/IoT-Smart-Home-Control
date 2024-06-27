@@ -35,7 +35,7 @@ void main() async {
         channelKey: "Raindrop Channel",
         channelName: "Raindrop Sensor",
         channelDescription: "Raindrop detection.",
-        importance: NotificationImportance.Min,
+        importance: NotificationImportance.High,
       ),
     ],
   );
