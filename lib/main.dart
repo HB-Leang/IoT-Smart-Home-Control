@@ -37,9 +37,15 @@ void main() async {
         channelDescription: "Raindrop detection.",
         importance: NotificationImportance.High,
       ),
+      NotificationChannel(
+        channelKey: "Garage Denied Channel",
+        channelName: "Garage Unlock",
+        channelDescription: "Maximum unlock attempted reached",
+        importance: NotificationImportance.High,
+      ),
     ],
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

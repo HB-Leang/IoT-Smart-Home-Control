@@ -23,9 +23,6 @@ class DatabaseController extends GetxController {
   late DatabaseReference light = database.child('smart-home/light');
   late DatabaseReference sensor = database.child('smart-home/sensor');
   late DatabaseReference actuators = database.child('smart-home/actuators');
-  // var  ledref = database.child('LivingRoom/');
-
-  // final DatabaseReference ledref = FirebaseDatabase.instance.ref("LivingRoom");
 
   @override
   void onInit() async {
@@ -60,40 +57,9 @@ class DatabaseController extends GetxController {
       return false;
     }
     getActuatorsValue(actuatorsnap);
-
-    // livingRoom.child('led1').once().then((snap) {
-    //   // final data = snap.snapshot.value;
-    //   // livingLed.value = data as int? ?? 0;
-
-    //   final data = snap.snapshot;
-    //   livingLed.value = data.value as int? ?? 0;
-
-    //   print(livingLed.value);
-    // });
-    // isConected = true;
     light.onValue.listen((DatabaseEvent event) {
       getLightValue(event);
       update();
-      // Map<dynamic, dynamic> values =
-      //     event.snapshot.value as Map<dynamic, dynamic>;
-      // print("light values in listen : $values");
-      // final snapshot = event.snapshot;
-      // print("event raise");
-      // // print(event.toString());
-      // // print(snapshot.value);
-
-      // lightController.livingRoom.value =
-      //     snapshot.child("livingRoom/state").value as int? ?? 0;
-
-      // // final snap = event.snapshot.value;
-      // // livingLed.value = snap as int? ?? 0;
-      // if (snapshot.key == 'livingRoom') {
-      //   livingLed.value = snapshot.child("state").value as int? ?? 0;
-      //   // print('living');
-      //   // print(livingLed.value);
-      // } else if (snapshot.key == '1stFloor') {
-      //   firstFloor.value = snapshot.child("state").value as int? ?? 0;
-      // }
     });
 
     sensor.onValue.listen((event) {
@@ -163,21 +129,17 @@ class DatabaseController extends GetxController {
     actuatorController.doors['bedRoom2']!.value = values['door']['bedRoom2'];
     actuatorController.doors['frontDoor']!.value = values['door']['frontDoor'];
     actuatorController.doors['garage']!.value = values['door']['garage'];
+    if (values['door']['garage'] == -1) {
+      notificationController.garageDeniedNotification();
+      final db = actuators.child("door/garage");
+      db.set(0);
+    }
   }
 
   Future<void> on_off(DatabaseReference dbRef, String childName) async {
-    // final child = await dbRef.child(childName).get();
-    // final child = await database.child('LivingRoom/led1/').get();
-    // if (child.exists) print(child.value);
     final db = dbRef.child(childName);
     final snapshot = await db.get();
-    // print("snap value get :${snapshot.child(childName).value}");
     await db.set(snapshot.child(childName).value == 1 ? 0 : 1);
     update();
-    // print("led : ${snapshot.child(childName).child('state').value}");
-    // final snapshot2 = await db.get();
-    // print(" snap : ${snapshot2.child("livingRoom").value}");
-    // dbRef.update({childName: snapshot.child(childName).value == 1 ? 0 : 1});
-    // dbRef.update({childName: snapshot.child(childName).value == 1 ? 0 : 1});
   }
 }

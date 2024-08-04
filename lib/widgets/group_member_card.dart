@@ -20,7 +20,7 @@ class GroupMemberCard extends StatelessWidget {
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         child: Stack(
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.2,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -49,17 +49,6 @@ class GroupMemberCard extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 color: Colors.amberAccent),
                           ),
-                          // const SizedBox(
-                          //   height: 5.0,
-                          // ),
-                          // Text(
-                          //   member.description,
-                          //   style: const TextStyle(
-                          //       fontSize: 14, color: Colors.white),
-                          //   softWrap: true,
-                          //   maxLines: 2,
-                          //   overflow: TextOverflow.ellipsis,
-                          // )
                         ],
                       ),
                     ),

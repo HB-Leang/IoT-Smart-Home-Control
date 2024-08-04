@@ -47,6 +47,16 @@ class NotificationController extends GetxController {
     );
   }
 
+  void garageDeniedNotification() {
+    AwesomeNotifications().createNotification(
+      content: NotificationContent(
+          id: createUniqueId(),
+          channelKey: "Garage Denied Channel",
+          title: "Garage unlock maximum reached!!",
+          body: "Someone might try opening your garage⚠️"),
+    );
+  }
+
   int createUniqueId() {
     return DateTime.now().millisecondsSinceEpoch.remainder(10000);
   }

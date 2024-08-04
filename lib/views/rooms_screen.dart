@@ -90,7 +90,7 @@ class RoomScreen extends StatelessWidget {
                   backgroundColor: mainColor,
                   contentPadding: const EdgeInsets.symmetric(
                       vertical: 10.0, horizontal: 10.0),
-                  unselectedLabelStyle: TextStyle(color: Colors.black),
+                  unselectedLabelStyle: const TextStyle(color: Colors.black),
                   labelStyle: const TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                   tabs: tabList,

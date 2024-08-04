@@ -27,12 +27,12 @@ class ModeSetButton extends StatelessWidget {
               size: 40,
               color: Colors.teal,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.black),

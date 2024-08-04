@@ -49,34 +49,5 @@ class IoTSwitch extends StatelessWidget {
         },
       ),
     );
-    // return Obx(
-    //   () => AdvancedSwitch(
-    //       controller: mySwitch.initValue.value == 1
-    //           ? ValueNotifier(true)
-    //           : ValueNotifier(false),
-    //       activeColor: switchActiveColor,
-    //       inactiveColor: swtichInactiveColor,
-    //       activeChild: Text(
-    //         activeChild,
-    //         style: const TextStyle(fontSize: 12),
-    //       ),
-    //       inactiveChild: Text(
-    //         inactiveChild,
-    //         style: const TextStyle(fontSize: 12),
-    //       ),
-    //       // initialValue: mySwitch.initValue.value == 1 ? true : false,
-    //       width: width,
-    //       height: height,
-    //       borderRadius: borderRadius,
-    //       // controller: _controller,
-    //       onChanged: (value) async {
-    //         await databaseController.on_off(
-    //             mySwitch.reference, mySwitch.childName);
-    //         initValue.value = mySwitch.initValue.value == 1 ? true : false;
-    //         print("value : $value");
-    //         print(initValue.value);
-    //         print(mySwitch.initValue.value);
-    //       }),
-    // );
   }
 }
