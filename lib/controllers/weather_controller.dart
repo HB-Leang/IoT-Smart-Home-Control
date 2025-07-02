@@ -15,11 +15,11 @@ class WeatherController extends GetxController {
 
   Future getData() async {
     try {
+      loading(true);
       var product = await APIService().fetchAPIData();
       if (product != null) {
         weather.value = product;
       }
-      loading(true);
     } finally {
       loading(false);
     }

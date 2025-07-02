@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:another_flutter_splash_screen/another_flutter_splash_screen.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -10,6 +12,8 @@ import 'package:smart_home_control/controllers/weather_controller.dart';
 import 'package:smart_home_control/firebase_options.dart';
 import 'package:smart_home_control/models/color.dart';
 
+
+const bool kReleaseMode = bool.fromEnvironment('dart.vm.product');
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -45,6 +49,10 @@ void main() async {
       ),
     ],
   );
+  FlutterError.onError = (details) {
+    FlutterError.presentError(details);
+    if (kReleaseMode) exit(1);
+  };
   runApp(const MyApp());
 }
 
