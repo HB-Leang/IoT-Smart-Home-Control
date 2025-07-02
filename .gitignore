@@ -9,7 +9,7 @@
 .history
 .svn/
 migrate_working_dir/
-/lib/api/weather_api.dart
+lib/api/weather_api.dart
 
 # IntelliJ related
 *.iml
